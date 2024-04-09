@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinic_app/core/core.dart';
 import 'package:flutter_clinic_app/presentation/home/pages/dashboard.dart';
 
 import '../../../core/components/buttons.dart';
 import '../../../core/components/custom_text_field.dart';
 import '../../../core/components/spaces.dart';
+import '../bloc/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -53,11 +55,47 @@ class _LoginPageState extends State<LoginPage> {
                         label: 'Kata Sandi',
                       ),
                       const SpaceHeight(40.0),
-                      Button.filled(
-                        onPressed: () {
-                          context.pushReplacement(const DashboardPage());
+                      BlocConsumer<LoginBloc, LoginState>(
+                        listener: (context, state) {
+                          state.maybeWhen(
+                              success: (data) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const DashboardPage(),
+                                  ),
+                                );
+                              },
+                              error: (message) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(message),
+                                  ),
+                                );
+                              },
+                              orElse: () {});
                         },
-                        label: 'MASUK',
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            orElse: () {
+                              return Button.filled(
+                                onPressed: () {
+                                  context.read<LoginBloc>().add(
+                                        LoginEvent.login(
+                                          emailController.text,
+                                          passwordController.text,
+                                        ),
+                                      );
+                                },
+                                label: 'MASUK',
+                              );
+                            },
+                            loading: () {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            },
+                          );
+                        },
                       ),
                       const SpaceHeight(20.0),
                       const SpaceHeight(100.0),

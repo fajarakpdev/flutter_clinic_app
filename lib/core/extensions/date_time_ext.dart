@@ -1,3 +1,4 @@
+// ignore: unused_element
 const List<String> _dayNames = [
   'Minggu',
   'Senin',
