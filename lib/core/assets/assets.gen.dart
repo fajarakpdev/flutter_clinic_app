@@ -75,10 +75,29 @@ class $AssetsImagesGen {
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
+  $AssetsImagesMenuGen get menu => const $AssetsImagesMenuGen();
   $AssetsImagesProductsGen get products => const $AssetsImagesProductsGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [splashScreen, dokterku, google];
+}
+
+class $AssetsImagesMenuGen {
+  const $AssetsImagesMenuGen();
+
+  /// File path: assets/images/menu/data.png
+  AssetGenImage get data => const AssetGenImage('assets/images/menu/data.png');
+
+  /// File path: assets/images/menu/jadwal.png
+  AssetGenImage get jadwal =>
+      const AssetGenImage('assets/images/menu/jadwal.png');
+
+  /// File path: assets/images/menu/layanan.png
+  AssetGenImage get layanan =>
+      const AssetGenImage('assets/images/menu/layanan.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [data, jadwal, layanan];
 }
 
 class $AssetsImagesProductsGen {
