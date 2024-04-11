@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clinic_app/data/datasources/auth_remote_datasource.dart';
+import 'package:flutter_clinic_app/data/datasources/master_remote_datasource.dart';
 import 'package:flutter_clinic_app/presentation/auth/bloc/logout/logout_bloc.dart';
 import 'package:flutter_clinic_app/presentation/auth/pages/login_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clinic_app/presentation/home/pages/dashboard.dart';
+import 'package:flutter_clinic_app/presentation/master/bloc/data_doctor/data_doctor_bloc.dart';
 import 'core/constants/colors.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LogoutBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DataDoctorBloc(MasterRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

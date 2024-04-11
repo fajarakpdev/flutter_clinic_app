@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         const Text(
-                          'Embark on efficiency with a single click, discover the seamless world of clinic management!',
+                          'Mulailah Efisiensi dengan satu klik, Bersama Fajar Klinik',
                           style: TextStyle(
                             fontSize: 32.0,
                             fontWeight: FontWeight.w700,

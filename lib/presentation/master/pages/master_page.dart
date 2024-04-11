@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clinic_app/core/core.dart';
 import 'package:flutter_clinic_app/presentation/master/pages/data_doctor_page.dart';
 
-import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/button_menu.dart';
 import '../../../core/components/spaces.dart';
 import '../../home/widgets/build_app_bar.dart';
