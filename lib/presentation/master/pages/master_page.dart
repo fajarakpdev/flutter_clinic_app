@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_clinic_app/core/core.dart';
+import 'package:flutter_clinic_app/presentation/master/pages/data_doctor_page.dart';
 
 import '../../../core/assets/assets.gen.dart';
 import '../../../core/components/button_menu.dart';
@@ -35,7 +37,9 @@ class _MasterPageState extends State<MasterPage> {
             ButtonMenu(
               label: 'Data Dokter',
               iconPath: Assets.images.menu.data.path,
-              onPressed: () => widget.onTap(1),
+              onPressed: () {
+                context.push(const DataDoctorPage());
+              },
             ),
             const SpaceWidth(45.0),
             ButtonMenu(
